@@ -1,20 +1,35 @@
 import numpy as np
 import cv2
+import matplotlib.pyplot as plt
+import sys, os
+from PIL import Image
+#%matplotlib inline
+
+#path
+in_file = "./data/shina_natsukawa/"
+out_file = "./data/shina_face/"
 
 #検出器読み込み
 cascade = cv2.CascadeClassifier('data/haarcascade_frontalface_default.xml')
-#画像読み込み
-img = cv2.imread('./data/test/momo_asakura1_1.jpg')
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
+#imagesリスト
+files = os.listdir(in_file)
 
-#顔検出
-faces = cascade.detectMultiScale(gray, 1.3, 5)
-for (x,y,w,h) in faces:
-    img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
-    roi_gray = gray[y:y+h, x:x+w]
-    roi_color = img[y:y+h, x:x+w]
-
-cv2.imshow('img',img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+fileNo = 0
+for i in files:
+    #画像読み込み
+    images = cv2.imread(in_file + i)
+    #顔検出
+    faces =  cascade.detectMultiScale(images, scaleFactor=1.3, minSize=(1,1))
+    #認識部分を保存
+    for rect in faces:
+        x = rect[0]
+        y = rect[1]
+        width = rect[2]
+        height = rect[3]
+        dst = images[y:y + height, x:x + width]
+        save_path = (out_file + '/' + str(fileNo) + '.jpg')
+        #save
+        cv2.imwrite(save_path, dst)
+        plt.show(plt.imshow(np.asarray(Image.open(save_path))))
+    fileNo += 1
