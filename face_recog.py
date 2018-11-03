@@ -10,7 +10,9 @@ in_file = "./data/shina_natsukawa/"
 out_file = "./data/shina_face/"
 
 #検出器読み込み
-cascade = cv2.CascadeClassifier('data/haarcascade_frontalface_default.xml')
+#cascade = cv2.CascadeClassifier('data/haarcascade_frontalface_default.xml')
+cascade = cv2.CascadeClassifier('data/haarcascade_frontalface_alt.xml')
+#cascade = cv2.CascadeClassifier('data/haarcascade_frontalface_alt2.xml')
 
 #imagesリスト
 files = os.listdir(in_file)
@@ -31,5 +33,5 @@ for i in files:
         save_path = (out_file + '/' + str(fileNo) + '.jpg')
         #save
         cv2.imwrite(save_path, dst)
-        plt.show(plt.imshow(np.asarray(Image.open(save_path))))
+        #plt.show(plt.imshow(np.asarray(Image.open(save_path))))
     fileNo += 1
