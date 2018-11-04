@@ -14,6 +14,8 @@ scraping.py
 
 face_recog.py
 
+resize.py
+
 3. CNNで顔画像を学習
 
 ## 参考
