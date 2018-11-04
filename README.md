@@ -22,7 +22,9 @@ resize.py
 
 padded.py
 
-X. CNNで顔画像を学習
+5. CNNで顔画像を学習
+
+CNN.ipynb
 
 ## 参考
 
