@@ -6,7 +6,7 @@ import numpy as np
 
 #path
 in_file = "./data/shina_face_resize/"
-out_file = "./data/shina_face_padded/"
+out_file = "./data/train/shina/"
 
 
 #imagesリスト
