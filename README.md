@@ -1,4 +1,4 @@
-# Clustering of TrySail
+# Classification of TrySail
 
 TrySailが好きすぎて気付いたら3人を分類するプログラムを作ってた。
 
@@ -8,23 +8,23 @@ TrySailが好きすぎて気付いたら3人を分類するプログラムを作
 
 1. スクレイピングして画像を収集
 
-scraping.py
+    scraping.py
 
 2. 顔領域を切り出し
 
-face_recog.py
+    face_recog.py
 
 3. 画像サイズを64✕64にリサイズ
 
-resize.py
+    resize.py
 
-4. 画像を水増し
+4. データ拡張
 
-padded.py
+    padded.py
 
 5. CNNで顔画像を学習
 
-CNN.ipynb
+    CNN.ipynb
 
 ## 参考
 
