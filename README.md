@@ -32,4 +32,6 @@ TrySailが好きすぎて気付いたら3人を分類するプログラムを作
 
 ## 参考
 
+全体的な参考: https://blog.aidemy.net/entry/2017/12/17/214715
+
 Scraping: https://qiita.com/tsuro/items/fa7bb3015feca1212732
