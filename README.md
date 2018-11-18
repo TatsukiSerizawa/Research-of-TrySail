@@ -26,6 +26,10 @@ TrySailが好きすぎて気付いたら3人を分類するプログラムを作
 
     CNN.ipynb
 
+6. テストデータを与えて認識結果を表示
+
+    recog_trysail.ipynb
+
 ## 参考
 
 Scraping: https://qiita.com/tsuro/items/fa7bb3015feca1212732
