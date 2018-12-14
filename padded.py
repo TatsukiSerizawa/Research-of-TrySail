@@ -20,16 +20,16 @@ for i in files:
     images.save(save_path)
     fileNo += 1
 
-    #回転とかエッジ抽出とか
-    flip_LR = images.transpose(Image.FLIP_LEFT_RIGHT)
-    save_path = (out_file + '/' + str(fileNo) + '.jpg')
-    flip_LR.save(save_path)
-    fileNo += 1
+    #回転とかエッジ抽出とか(上下左右反転はおかしいやろ)
+#    flip_LR = images.transpose(Image.FLIP_LEFT_RIGHT)
+#    save_path = (out_file + '/' + str(fileNo) + '.jpg')
+#    flip_LR.save(save_path)
+#    fileNo += 1
 
-    flip_TB = images.transpose(Image.FLIP_TOP_BOTTOM)
-    save_path = (out_file + '/' + str(fileNo) + '.jpg')
-    flip_TB.save(save_path)
-    fileNo += 1
+#    flip_TB = images.transpose(Image.FLIP_TOP_BOTTOM)
+#    save_path = (out_file + '/' + str(fileNo) + '.jpg')
+#    flip_TB.save(save_path)
+#    fileNo += 1
 
     edge = images.filter(ImageFilter.EDGE_ENHANCE)
     save_path = (out_file + '/' + str(fileNo) + '.jpg')
