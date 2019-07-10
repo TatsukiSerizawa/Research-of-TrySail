@@ -1,8 +1,9 @@
+# Research of TrySail
 TrySailという声優ユニットに関するデータを活用して分析などを行っています． 
 
 I am analysis using data about the voice actor unit called TrySail.
 
-# Directory description
+## Directory description
 
 - src/classification: 
     
