@@ -1,37 +1,12 @@
-# Classification of TrySail
+TrySailという声優ユニットに関するデータを活用して分析などを行っています． 
 
-TrySailが好きすぎて気付いたら3人を分類するプログラムを作ってた。
+I am analysis using data about the voice actor unit called TrySail.
 
-あとナンスが可愛い。
+# Directory description
 
-## 手順
+- src/classification: 
+    
+    TrySailの3人の画像を学習することで，それぞれを分類するタスクを行っています．
+- src/analysis_from_spotify:
 
-1. スクレイピングして画像を収集
-
-    scraping.py
-
-2. 顔領域を切り出し
-
-    face_recog.py
-
-3. 画像サイズを64✕64にリサイズ
-
-    resize.py
-
-4. データ拡張
-
-    padded.py
-
-5. CNNで顔画像を学習
-
-    CNN.ipynb
-
-6. テストデータを与えて認識結果を表示
-
-    recog_trysail.ipynb
-
-## 参考
-
-全体的な参考: https://blog.aidemy.net/entry/2017/12/17/214715
-
-Scraping: https://qiita.com/tsuro/items/fa7bb3015feca1212732
+    Spotifyから提供されている評価データを活用して楽曲の分析のを行っています．
