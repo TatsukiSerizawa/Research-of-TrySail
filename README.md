@@ -11,3 +11,7 @@ I am analysis using data about the voice actor unit called TrySail.
 - src/analysis_from_spotify:
 
     Spotifyから提供されている評価データを活用して楽曲の分析のを行っています．
+
+## Blog
+
+[Spotify APIを使って好きなアーティストの曲を分析する - セーターの備忘録](http://resweater.hatenablog.com/entry/2019/07/12/172143)
