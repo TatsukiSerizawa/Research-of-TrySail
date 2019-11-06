@@ -1,50 +1,63 @@
-# coding:utf-8
-import re
-
+from urllib.request import urlopen
 import requests
 from bs4 import BeautifulSoup
+import pandas as pd
+
+#url = 'https://ameblo.jp/natsukawashiinablog/entrylist.html'
+
+#response = requests.get(url)
+
+def get_entry_list(url):
+    links = []
+    html = urlopen(url)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    pages = soup.find_all('li', class_='skin-borderQuiet')
+    for link in pages:
+        #print(link.find("a").get("href"))
+        links.append(link.find("a").get("href"))
+    return links
 
 
-def get_entry_list(html):
-    url_list = [html]
-    while True:
-        html = requests.get(html).content
-        soup = BeautifulSoup(html, "lxml")
-        next_page = soup.find("a", {"class", "skinSimpleBtn pagingNext"})
-        if isinstance(next_page, type(None)):
-            print("finish")
-            return url_list
-        else:
-            url_list.append(next_page["href"])
-            html = next_page["href"]
+'''
+# 出力フォーマットの定義
+columns = ['title', 'url']
+df = pd.DataFrame(columns=columns)
 
+# スクレイピング先URL
+url = 'https://ameblo.jp/natsukawashiinablog/entrylist.html'
+#url = 'https://dividable.net/'
+  
+# ブログ記事取得
+def getTargetPageData(targetUrl):
+  print(targetUrl)
+  html = urlopen(targetUrl)
+  soup = BeautifulSoup(html, 'html.parser')
+  entries = soup.find_all('li', class_='skin-borderQuiet')
+  #entries = soup.find_all('div', class_='col-xs-12 wrap')
+  global df
 
-def get_url(entry_list):
-    page_list = []
-    for html in entry_list:
-        html = requests.get(html).content
-        soup = BeautifulSoup(html, "lxml")
-        text = soup.find_all("a", {"class", "contentTitle"})
-        page_list.append(text)
-    print("finish")
-    return page_list
+  print(entries)
 
+  for entry in entries:
+      se = pd.Series([
+          entry.find('h2').find('a').get('title'),  #title
+          entry.find('h2').find('a').get('href') #url
+      ], columns)
+      df = df.append(se, columns)
 
-def cleanhtml(raw_html):
-    cleanr = re.compile("<.*?>")
-    cleantext = re.sub(cleanr, "", raw_html)
-    return cleantext
+      
+  nextPage = soup.find('div', class_='pull-right')   
+  nextPageUrl = nextPage.find('a')
+  if nextPageUrl:
+    getTargetPageData(nextPageUrl.get('href'))
+  else:
+    print('Done')
 
+if __name__ == '__main__':
+  getTargetPageData(url)
+  
+  # 取得したデータを表示
+  df
 
-def scraping(all_entry_list, BASE_DIRE):
-    for entry_list in all_entry_list:
-        for url in entry_list:
-            title = url.string
-            with open("{dir}{title}.txt".format(dir=BASE_DIRE, title=title), "w") as file:
-                html = requests.get(url["href"]).content
-                soup = BeautifulSoup(html, "lxml")
-                div_text = soup.find("div", {"class", "articleText"})
-                text = cleanhtml(str(div_text)).strip()
-                print("Written file: {0}.txt".format(title))
-                file.write(text)
-    print("finish")
+'''
