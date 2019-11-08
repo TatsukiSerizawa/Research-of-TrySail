@@ -40,14 +40,6 @@ logger.info('Parsed text.')
 text_model = markov.build_model(parsed_text, format=format, state_size=2)
 logger.info('Built text model.')
 
-json = text_model.to_json()
-open('../../data/blog/Natukawa_Shiina/cleaning_text.json', 'w').write(json)
-
-
-# Load from JSON
-# json = open('input.json').read()
-# text_model = markovify.Text.from_json(json)
-
 
 """
 3. Make sentences
@@ -55,7 +47,8 @@ open('../../data/blog/Natukawa_Shiina/cleaning_text.json', 'w').write(json)
 try:
     for _ in range(10):
         sentence = markov.make_sentences(text_model, start='', max=max_chars, min=min_chars)
-        logger.info(sentence)
+        #logger.info(sentence)
+        print(sentence + "\n")
 except KeyError:
     logger.error('KeyError: No sentence starts with "start".')
     logger.info('If you set format=True, please change "start" to another word.')

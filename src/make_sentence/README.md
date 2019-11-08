@@ -4,7 +4,8 @@ Blogから文章を抽出した上で学習を行い，文章を生成します�
 
 ## Directory description
 - create_files.pyを実行することでscraping.pyも呼び出されて実行，スクレイピングした文章をファイルに保存する．
-- make_sentence.pyを実行することでmarkov.pyも呼び出されて実行，文章を形態素解析した上でマルコフ連鎖でモデルを作って文章を生成する．
+- 引数にファイル名を入れてmake_sentence.pyを実行することでmarkov.pyも呼び出されて実行，文章を形態素解析した上でマルコフ連鎖でモデルを作って文章を生成する．
+- make_sentence_original.py: ライブラリでエラーが出る
 
 ## References
 - 麻倉ももについての説明とブログのスクレイピング, http://be-07.hatenablog.com/entry/2016/12/22/000356
